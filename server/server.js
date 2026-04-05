@@ -16,6 +16,9 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+app.get("/test-db", async (req, res) => { try { await userModel.create({ clerkId: "vercel123", email: "vercel@test.com", photo: "test.jpg" }); res.send("Inserted ✅"); } catch (err) { console.log(err); res.send("Error ❌"); } });
+
+
 //API routes
 app.get('/', (req, res) => res.send("API Working"))
 app.use('/api/user', userRouter)
