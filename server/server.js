@@ -3,7 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import connectDB from './configs/mongodb.js'
 import userRouter from './routes/UserRoutes.js'
-
+import userModel from './models/userModel.js'
 
 
 // App Config
