@@ -13,7 +13,7 @@ const clerkWebhooks = async(req, res) => {
         await whook.verify(JSON.stringify(req.body),{
             "svix-id":req.headers["svix-id"],
             "svix-timestamp":req.headers["svix-timestamp"],
-            "svix-signature":req.headers["svix-signature"],
+            "svix-signature":req.headers["svix-signature"]
         })
 
         const {data, type} = req.body
@@ -45,7 +45,7 @@ const clerkWebhooks = async(req, res) => {
                     photo: data.image_url
                 }
 
-                await userModel.findOneAndUpdate({clerkID:data.id}, userData)
+                await userModel.findOneAndUpdate({clerkId:data.id}, userData)
                 res.json({})
                 break;
             }
