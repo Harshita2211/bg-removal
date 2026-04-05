@@ -5,7 +5,7 @@ import userModel from "../models/userModel.js"
 // http://localhost:4000/api/user/webhooks
 
 const clerkWebhooks = async(req, res) => {
-
+await connectDB()
     try{
         // Create a Svix instance with clerk webhook service.
         const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET)
