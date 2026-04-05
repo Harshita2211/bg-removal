@@ -16,7 +16,22 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.get("/test-db", async (req, res) => { try { await userModel.create({ clerkId: "vercel123", email: "vercel@test.com", photo: "test.jpg" }); res.send("Inserted ✅"); } catch (err) { console.log(err); res.send("Error ❌"); } });
+app.get("/test-db", async (req, res) => {
+  try {
+    await connectDB();
+
+    await userModel.create({
+      clerkId: "vercel123",
+      email: "vercel@test.com",
+      photo: "test.jpg"
+    });
+
+    res.send("Inserted ✅");
+  } catch (err) {
+    console.log(err);
+    res.send("Error ❌: " + err.message);  // 👈 IMPORTANT
+  }
+});
 
 
 //API routes
